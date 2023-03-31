@@ -6,21 +6,17 @@ import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "organization")
 public class Organization {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "org_id", nullable = false)
@@ -29,16 +25,11 @@ public class Organization {
     @Size(min = 2, max = 20, message = "Invalid first name!(2-20 characters)")
     @NotBlank
     private String name;
-    @OneToMany(mappedBy = "name", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<ConferenceRoom> conferenceRooms;
+    //@OneToMany(mappedBy = "name", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //public List<ConferenceRoom> conferenceRooms;
 
     public Organization(String name) {
         this.name = name;
-    }
-
-    public Organization(String name, List<ConferenceRoom> conferenceRooms) {
-        this.name = name;
-        this.conferenceRooms = conferenceRooms;
     }
 
 

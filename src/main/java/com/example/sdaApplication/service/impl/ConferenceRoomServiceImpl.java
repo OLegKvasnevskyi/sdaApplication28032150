@@ -54,7 +54,7 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService {
         conferenceRoomUpdateById.setIdentifier(conferenceRoom.getIdentifier());
         conferenceRoomUpdateById.setAvailability(conferenceRoom.getAvailability());
         conferenceRoomUpdateById.setNumberOfSeats(conferenceRoom.getNumberOfSeats());
-        conferenceRoomUpdateById.setOrganization(conferenceRoom.getOrganization());
+        //  conferenceRoomUpdateById.setOrganization(conferenceRoom.getOrganization());
         return conferenceRoomMapper.roomToRoomDto(conferenceRoomRepository.save(conferenceRoomUpdateById));
     }
 
@@ -64,4 +64,13 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService {
                 .orElseThrow(ResourceNotFoundException::new);
         conferenceRoomRepository.delete(conferenceRoom);
     }
+/*
+    @Override
+    public void reservationConferenceRoomById(Integer id) {
+        ConferenceRoom conferenceRoom = conferenceRoomRepository.findById(id)
+                .orElseThrow(ResourceNotFoundException::new);
+        conferenceRoomRepository.delete(conferenceRoom);
+    }
+
+ */
 }

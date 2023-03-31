@@ -4,14 +4,14 @@ import com.example.sdaApplication.mapper.organization.OrganizationDto;
 import com.example.sdaApplication.model.Organization;
 import com.example.sdaApplication.service.OrganizationService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 
 @Controller
@@ -26,16 +26,28 @@ public class OrganizationController {
     //@ResponseStatus("/organizations")
     //@RequestMapping(value = "/organizations", method = RequestMethod.GET)
 
+
+    @GetMapping({"/", "index"})
+    public String getIndex(Model model) {
+        model.addAttribute("name", "Joe");
+        model.addAttribute("condition", Boolean.FALSE);
+        model.addAttribute("role", "manager");
+        model.addAttribute("students", List.of("Joe Biden", "Donald Trump", "Barack Obama"));
+        model.addAttribute("organizations", organizationService.getAllOrganizations().stream().sorted());
+        return "index";
+
+    }
+
     @GetMapping("/home")
     public String home() {
 
         return "home";
     }
+
     //@PageableDefault(sort = {"name"}, direction = Sort.Direction.ASC)
     @GetMapping("/organizations")
     public String listOrganizations(Model model) {
         model.addAttribute("organizations", organizationService.getAllOrganizations());
-        System.out.println(organizationService.getAllOrganizations().toString());
         return "organizations";
     }
 

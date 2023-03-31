@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">ConferenceRoom Management System</a>
+    <a class="navbar-brand" href="#">Reservation Management System</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
@@ -22,13 +22,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/organizations}">Organization Management</a>
+                <a class="nav-link" th:href="@{/reservations}">Reservation Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/conferencerooms}">ConferenceRoom Management</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/reservations}">Reservations Management</a>
+                <a class="nav-link" th:href="@{/reservations}">Reservation Management</a>
             </li>
         </ul>
     </div>
@@ -36,12 +33,12 @@
 
 <div class="container">
     <div class="row">
-        <h1> List ConferenceRoom </h1>
+        <h1> List Reservation </h1>
     </div>
 
     <div class="row">
         <div class="col-lg-3">
-            <a class="btn btn-primary btn-sm mb-3" th:href="@{/conferencerooms/new}"> Add ConferenceRoom</a>
+            <a class="btn btn-primary btn-sm mb-3" th:href="@{/reservations/new}"> Add Reservation</a>
         </div>
     </div>
     <table class="table table-striped table-bordered">
@@ -57,22 +54,23 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="conferenceroom: ${conferencerooms}">
-            <td th:text="${conferenceroom.id}"></td>
-            <td th:text="${conferenceroom.name}"></td>
-            <td th:text="${conferenceroom.identifier}"></td>
-            <td th:text="${conferenceroom.availability}"></td>
-            <td th:text="${conferenceroom.numberOfSeats}"></td>
-            <td th:text="${conferenceroom.organization}"></td>
+
+        <tr th:each="reservation: ${reservations}">
+            <td th:text="${reservation.id}"></td>
+            <td th:text="${reservation.startOfBooking}"></td>
+            <td th:text="${reservation.endOfBooking}"></td>
+            <td th:text="${reservation.name}"></td>
+            <td th:text="${reservation.conferenceRoomBooked}"></td>
+            <td th:text="${reservation.organization}"></td>
             <td>
                 <a class="btn btn-primary"
-                   th:href="@{/conferencerooms/edit/{id}(id=${conferenceroom.id})}">Update</a>
+                   th:href="@{/reservations/edit/{id}(id=${reservation.id})}">Update</a>
 
                 <a class="btn btn-danger"
-                   th:href="@{/conferencerooms/{id}(id=${conferenceroom.id})}">Delete</a>
+                   th:href="@{/reservations/{id}(id=${reservation.id})}">Delete</a>
 
                 <a class="btn btn-success"
-                   th:href="@{/conferencerooms/reservation/{id}(id=${conferenceroom.id})}">Reservation</a>
+                   th:href="@{/reservations/reservation/{id}(id=${reservation.id})}">Reservation</a>
 
             </td>
         </tr>

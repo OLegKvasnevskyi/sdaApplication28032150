@@ -19,7 +19,7 @@ public class ConferenceRoomMapper {
                 .identifier(conferenceRoomDTO.getIdentifier())
                 .availability(conferenceRoomDTO.getAvailability())
                 .numberOfSeats(conferenceRoomDTO.getNumberOfSeats())
- //               .organization(conferenceRoomDTO.getOrganization())
+                .organization(conferenceRoomDTO.getOrganization())
                 .build();
     }
 
@@ -37,7 +37,7 @@ public class ConferenceRoomMapper {
                 .identifier(conferenceRoom.getIdentifier())
                 .availability(conferenceRoom.getAvailability())
                 .numberOfSeats(conferenceRoom.getNumberOfSeats())
-               .organization(conferenceRoom.getOrganization())
+                .organization(conferenceRoom.getOrganization())
                 .build();
     }
 

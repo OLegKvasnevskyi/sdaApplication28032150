@@ -1,12 +1,10 @@
 package com.example.sdaApplication.mapper.organization;
 
-import com.example.sdaApplication.model.ConferenceRoom;
 import jakarta.persistence.*;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Data
@@ -25,6 +23,6 @@ public class OrganizationDto {
     @NotBlank
     private String name;
 
-    @OneToMany(mappedBy = "identifier", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<ConferenceRoom> conferenceRooms;
+    //@OneToMany(mappedBy = "name", cascade = CascadeType.ALL, orphanRemoval = true)
+    //public List<ConferenceRoom> conferenceRooms;
 }

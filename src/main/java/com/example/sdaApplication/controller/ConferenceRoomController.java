@@ -3,6 +3,7 @@ package com.example.sdaApplication.controller;
 
 import com.example.sdaApplication.mapper.conferenceroom.ConferenceRoomDto;
 import com.example.sdaApplication.model.ConferenceRoom;
+import com.example.sdaApplication.model.Organization;
 import com.example.sdaApplication.service.ConferenceRoomService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +26,9 @@ public class ConferenceRoomController {
 
     @GetMapping("/conferencerooms")
     public String listConferenceRooms(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Model model) {
+
         model.addAttribute("conferencerooms", conferenceRoomService.getAllConferenceRooms());
+
 
         return "/conferencerooms";
     }
@@ -46,13 +49,30 @@ public class ConferenceRoomController {
     @GetMapping("/conferencerooms/edit/{id}")
     public String editConferenceRoomForm(@PathVariable Integer id, Model model) {
         model.addAttribute("conferenceroom", conferenceRoomService.getConferenceRoomById(id));
+        model.addAttribute("conferenceroom.identifier", "manager");
         return "edit_conferenceroom";
     }
 
     @GetMapping("/conferencerooms/reservation/{id}")
-    public String reservationConferenceRoomForm(@PathVariable Integer id, Model model) {
+    public String reservationConferenceRoomForm(@PathVariable Integer id, ConferenceRoom conferenceRoom, Organization organization, Model model) {
         model.addAttribute("conferenceroom", conferenceRoomService.getConferenceRoomById(id));
         ConferenceRoomDto confRoomDtoTemp = conferenceRoomService.getConferenceRoomById(id);
+/*
+        .setPostHeader("Avengers");
+
+        List<Organization> allComments = new ArrayList<>();
+        comment1.setText("Tony Stark was great!");
+        comment2.setText("No, Iron Man was the best!");
+        comment3.setText("Have you heard about Tor?");
+
+        allComments.add(comment1);
+        allComments.add(comment2);
+        allComments.add(confRoomDtoTemp);
+
+        post.setComments(allComments);
+
+ */
+
         return "reservation_conferenceroom";
     }
 

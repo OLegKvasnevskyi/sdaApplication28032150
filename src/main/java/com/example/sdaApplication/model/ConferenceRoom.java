@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 public class ConferenceRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "conferenceroom_id", nullable = false)
+    @Column(name = "conf_id", nullable = false)
     private Integer id;
     @NotBlank(message = "Conference room's name is mandatory")
     @Size(min = 2, max = 20)
@@ -32,24 +32,21 @@ public class ConferenceRoom {
     @Column(name = "number_of_seats", nullable = false)
     private Integer numberOfSeats;
 
-
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "org_id")
     private Organization organization;
 
-/*
-        @ManyToMany(mappedBy = "reservations")
-        private List<Reservation> reservations;
+    /*
+                @ManyToMany(mappedBy = "reservations")
+                private List<Reservation> reservations;
 
-        @OneToMany(mappedBy = "conferenceRoom", cascade = CascadeType.ALL, orphanRemoval = true)
-        private List<Equipment> equipments;
+                @OneToMany(mappedBy = "conferenceRoom", cascade = CascadeType.ALL, orphanRemoval = true)
+                private List<Equipment> equipments;
 
-    public ConferenceRoom(String name) {
-        this.name = name;
-    }
-*/
+            public ConferenceRoom(String name) {
+                this.name = name;
+            }
+        */
     public ConferenceRoom(String name,
                           IdentifierEnum identifier,
                           AvailabilityEnum availability,
@@ -60,7 +57,17 @@ public class ConferenceRoom {
         this.availability = availability;
         this.numberOfSeats = numberOfSeats;
         this.organization = organization;
+
     }
 
 
+    public ConferenceRoom(String name,
+                          IdentifierEnum identifier,
+                          AvailabilityEnum availability,
+                          Integer numberOfSeats) {
+        this.name = name;
+        this.identifier = identifier;
+        this.availability = availability;
+        this.numberOfSeats = numberOfSeats;
+    }
 }

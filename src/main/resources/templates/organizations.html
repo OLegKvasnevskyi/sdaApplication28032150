@@ -1,80 +1,77 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Organization Management System</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+    <meta charset="ISO-8859-1">
+    <title>Organization Management System</title>
+    <link crossorigin="anonymous"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">Organization Management System</a>
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Organization Management System</a>
 
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/organizations}">Organization Management</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/conferencerooms}">ConferenceRoom Management</a>
-      </li>
-		<li class="nav-item">
-			<a class="nav-link" th:href="@{/proba}">PROBA</a>
-		</li>
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/organizations}">Organization Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/conferencerooms}">ConferenceRoom Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/reservations}">Reservations Management</a>
+            </li>
 
-    </ul>
-  </div>
+        </ul>
+    </div>
 </nav>
 
-	<div class ="container">
-		<div class = "row">
-			<h1> List Organization </h1>
-		</div>
-		
-		<div class = "row">
-			<div class = "col-lg-3">
-				<a th:href = "@{/organizations/new}" class = "btn btn-primary btn-sm mb-3"> Add Organization</a>
-			</div>
-		</div>
-		<table class = "table table-striped table-bordered">
-			<thead class = "table-dark">
-				<tr>
-					<th> #</th>
-					<th> Organization Name</th>
-					<th> ConferenceRoom Name</th>
-					<th> Actions </th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<tr th:each = "organization: ${organizations}">
-					<td th:text = "${organization.id}"></td>
-					<td th:text = "${organization.name}"></td>
+<div class="container">
+    <div class="row">
+        <h1> List Organization </h1>
+    </div>
 
+    <div class="row">
+        <div class="col-lg-3">
+            <a class="btn btn-primary btn-sm mb-3" th:href="@{/organizations/new}"> Add Organization</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th> #</th>
+            <th> Organization Name</th>
+            <th> ConferenceRoom Name</th>
+            <th> Actions</th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <tr th:each="organization: ${organizations}">
+            <td th:text="${organization.id}"></td>
+            <td th:text="${organization.name}"></td>
+            <td>
+                <a class="btn btn-primary"
+                   th:href="@{/organizations/edit/{id}(id=${organization.id})}">Update</a>
 
-					<td>
-						<a th:href = "@{/organizations/edit/{id}(id=${organization.id})}"
-						 class = "btn btn-primary">Update</a>
-						
-						<a th:href = "@{/organizations/{id}(id=${organization.id})}"
-						 class = "btn btn-danger">Delete</a>
-						 
-					</td>
-				</tr>
-			</tbody>
-		
-		</table>
-		
-	</div>
+                <a class="btn btn-danger"
+                   th:href="@{/organizations/{id}(id=${organization.id})}">Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
 </body>
 </html>

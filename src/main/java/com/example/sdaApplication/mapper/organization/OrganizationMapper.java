@@ -17,7 +17,7 @@ public class OrganizationMapper {
         return Organization.builder()
                 .id(organizationDTO.getId())
                 .name(organizationDTO.getName())
-                .conferenceRooms(organizationDTO.getConferenceRooms())
+                //.conferenceRooms(organizationDTO.getConferenceRooms())
                 .build();
     }
 
@@ -32,7 +32,7 @@ public class OrganizationMapper {
         return OrganizationDto.builder()
                 .id(organization.getId())
                 .name(organization.getName())
-                .conferenceRooms(organization.getConferenceRooms())
+                //.conferenceRooms(organization.getConferenceRooms())
                 .build();
     }
 

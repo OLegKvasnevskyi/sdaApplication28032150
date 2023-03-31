@@ -3,10 +3,10 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>ConferenceRoom Management System</title>
-    <link rel="stylesheet"
+    <link crossorigin="anonymous"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
+          rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -14,7 +14,7 @@
     <a class="navbar-brand" href="#">ConferenceRoom Management System</a>
 
     <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -34,41 +34,41 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center"> Create New ConferenceRoom </h1>
             <div class="card-body">
-                <form th:action="@{/conferencerooms}" th:object="${conferenceroom}" method="POST">
+                <form method="POST" th:action="@{/conferencerooms}" th:object="${conferenceroom}">
                     <div class="form-group">
                         <label> ConferenceRoom Name </label>
-                        <input type="text"
+                        <input class="form-control"
                                name="name"
-                               th:field="*{name}"
-                               class="form-control"
                                placeholder="Enter ConferenceRoom Name"
+                               th:field="*{name}"
+                               type="text"
                         />
                     </div>
                     <div class="form-group">
                         <label> ConferenceRoom Identifier </label>
-                        <input type="text"
+                        <input class="form-control"
                                name="identifier"
-                               th:field="*{identifier}"
-                               class="form-control"
                                placeholder="Enter ConferenceRoom Identifier"
+                               th:field="*{identifier}"
+                               type="text"
                         />
                     </div>
                     <div class="form-group">
                         <label> ConferenceRoom Availability </label>
-                        <input type="text"
-                               name="availability" value="Bike"
+                        <input class="form-control"
+                               name="availability" placeholder="Enter ConferenceRoom Availability"
                                th:field="*{availability}"
-                               class="form-control"
-                               placeholder="Enter ConferenceRoom Availability"
+                               type="text"
+                               value="Bike"
                         />
                     </div>
                     <div class="form-group">
                         <label> ConferenceRoom NumberOfSeats </label>
-                        <input type="number"
+                        <input class="form-control"
                                name="numberOfSeats"
-                               th:field="*{numberOfSeats}"
-                               class="form-control"
                                placeholder="Enter ConferenceRoom numberOfSeats"
+                               th:field="*{numberOfSeats}"
+                               type="number"
                         />
                     </div>
 
@@ -83,15 +83,15 @@
                     </div>
                     <div>
 
-                        <select name="availability" id="availability">
-                            <list fromLang as frLang>
+                        <select id="availability" name="availability">
+                            <list as frLang fromLang>
                                 <option>${availability}</option>
                             </list>
                         </select>
 
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">
+                        <button class="btn btn-primary" type="submit">
                             Submit
                         </button>
                     </div>

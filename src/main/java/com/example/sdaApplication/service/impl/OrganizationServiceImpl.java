@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class OrganizationServiceImpl implements OrganizationService {
 
     private final OrganizationRepository organizationRepository;
@@ -26,8 +25,6 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     public List<OrganizationDto> getAllOrganizations() {
-        System.out.println(organizationRepository.findAll().toString());
-        System.out.println(organizationMapper.orgToOrgDtoS(organizationRepository.findAll()).toString());
         return organizationMapper.orgToOrgDtoS(organizationRepository.findAll());
     }
 

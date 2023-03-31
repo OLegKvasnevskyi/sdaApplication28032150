@@ -4,7 +4,7 @@ public enum IdentifierEnum {
     MEETING_ROOM("MEETING_ROOM"),
     CONFERENCE_ROOM("CONFERENCE_ROOM");
 
-  private final String identifier;
+    private final String identifier;
 
     IdentifierEnum(String identifier) {
         this.identifier = identifier;

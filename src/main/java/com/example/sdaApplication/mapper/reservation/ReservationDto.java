@@ -1,4 +1,4 @@
-package com.example.sdaApplication.model;
+package com.example.sdaApplication.mapper.reservation;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Table(name = "reservation")
-public class Reservation {
+public class ReservationDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "reservation_id", nullable = false)
@@ -36,14 +36,6 @@ public class Reservation {
     private List<ConferenceRoom> reservations;
 */
 
-    public Reservation(String name) {
-        this.name = name;
-    }
 
-    public Reservation(Date startOfBooking, Date endOfBooking, String name, String conferenceRoomBooked) {
-        this.startOfBooking = startOfBooking;
-        this.endOfBooking = endOfBooking;
-        this.name = name;
-        this.conferenceRoomBooked = conferenceRoomBooked;
-    }
 }
+
